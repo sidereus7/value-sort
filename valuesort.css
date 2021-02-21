@@ -1,4 +1,42 @@
+html {
+	height: 100%;
+}
+
+body {
+	background: lightblue;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	overflow: hidden;
+}
+
 h1 {
 	font-family: Helvetica, Arial, sans-serif;
-	color: blue;
+}
+
+.columns {
+	display: flex;
+	flex: 1;
+	overflow: hidden;
+}
+
+.column {
+	background: lightgray;
+	border: black solid 1px;
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	overflow: hidden;
+
+	margin-left: 1%;
+	margin-right: 1%;
+}
+
+.list-of-cards {
+	flex: 1;
+	overflow-y: scroll;
+}
+
+.column h2 {
+	text-align: center;
 }
