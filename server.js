@@ -3,7 +3,7 @@
 var http = require('http');
 var fs = require('fs');
 
-var allowList = ['valuesort.html', 'valuesort.css'];
+var allowList = ['index.html', 'styles/valuesort.css'];
 
 http.createServer(function (request, response) {
 		var filename = request.url.substring(1); // remove leading "/"
@@ -12,7 +12,9 @@ http.createServer(function (request, response) {
   		response.writeHead(404, {'Content-Type': 'text/plain'});
 	    return response.end("404 Not Found");
   	} else if (filename === "") {
-  		filename = "valuesort.html";
+  		filename = "public/index.html";
+  	} else if (filename == "styles/valuesort.css") {
+  		filename = "public/styles/valuesort.css";
   	}
 
 		var dotoffset = filename.lastIndexOf('.');
