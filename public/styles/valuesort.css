@@ -40,3 +40,36 @@ h1 {
 .column h2 {
 	text-align: center;
 }
+
+.current-card {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	margin-bottom: 20px;
+}
+
+.card {
+	background: white;
+	border: black solid 2px;
+	height: 175px;
+	width: 375px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.card-title {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 0px;
+}
+
+.card-desc {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 16px;
+
+}
