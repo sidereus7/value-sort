@@ -1,5 +1,6 @@
 'use strict';
 
+// Set up all event listeners
 window.addEventListener('DOMContentLoaded', () => {
   // TODO: look at JS bubbling to add event listeners to
   // dynamically created elements
@@ -15,6 +16,28 @@ window.addEventListener('DOMContentLoaded', () => {
     column.addEventListener("drop", drop_handler);
   });
 });
+
+// Request valuecards.json file and parse results
+var httpRequest = new XMLHttpRequest();
+
+if (!httpRequest) {
+  alert('Giving up :( Cannot create an XMLHTTP instance');
+}
+
+httpRequest.addEventListener("load", doStuff);
+httpRequest.open('GET', '/valuecards.json');
+// httpRequest.setRequestHeader('Access-Control-Allow-Origin', '*');
+httpRequest.send();
+
+function doStuff() {
+	if (httpRequest.readyState === XMLHttpRequest.DONE) {
+	  if (httpRequest.status === 200) {
+	    console.log(httpRequest.responseText);
+	  } else {
+	    console.log('There was a problem with the request.');
+	  }
+	}
+}
 
 function dragstart_handler(ev) {
   // Add the target element's id to the data transfer object
@@ -54,40 +77,3 @@ function drop_handler(ev) {
   card.querySelector(".card-title").style.fontSize = "16px";
   card.querySelector(".card-desc").style.fontSize = "12px";
 }
-
-// do an Ajax request for the json file
-// because this is on the client side
-// and I do not have node here.
-
-// node is my server and I will ask it for things
-// via Ajax
-
-/* This is broken.
- * Ready State: 1
- * Status: 0  <-- this seems bad
- */
-
-/*
-var httpRequest = new XMLHttpRequest();
-
-if (!httpRequest) {
-  alert('Giving up :( Cannot create an XMLHTTP instance');
-}
-
-httpRequest.open('GET', 'http://127.0.0.1:8080/valuecards.json');
-
-// this isn't working to fix CORS issue. I thought it would.
-// Let's try and figure this out later
-httpRequest.setRequestHeader('Access-Control-Allow-Origin', 'GET');
-httpRequest.send();
-
-console.log("Ready state: " + httpRequest.readyState);
-console.log("Status: " + httpRequest.status);
-if (httpRequest.readyState === XMLHttpRequest.DONE) {
-  if (httpRequest.status === 200) {
-    console.log(httpRequest.responseText);
-  } else {
-    console.log('There was a problem with the request.');
-  }
-}
-*/
