@@ -1,5 +1,7 @@
 'use strict';
 
+var cardList = [];
+
 // Set up all event listeners
 window.addEventListener('DOMContentLoaded', () => {
   // TODO: look at JS bubbling to add event listeners to
@@ -26,18 +28,55 @@ if (!httpRequest) {
 
 httpRequest.addEventListener("load", doStuff);
 httpRequest.open('GET', '/valuecards.json');
-// httpRequest.setRequestHeader('Access-Control-Allow-Origin', '*');
 httpRequest.send();
 
 function doStuff() {
   if (httpRequest.readyState === XMLHttpRequest.DONE) {
     if (httpRequest.status === 200) {
-      console.log(httpRequest.responseText);
+      var cardData = JSON.parse(httpRequest.responseText);
+      createCards(cardData['cards']);
     } else {
       console.log('There was a problem with the request.');
     }
   }
 }
+
+function createCards(cardData) {
+  for (var i = 0; i < cardData.length; i++) {
+    // create a card DOM object
+    var cardInfo = cardData[i];
+
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.setAttribute('id', cardInfo.title);
+    card.setAttribute('draggable', 'true');
+
+    // populate the title and description
+    const cardTitle = document.createElement("p");
+    cardTitle.textContent = cardInfo.title;
+    cardTitle.classList.add("card-title");
+    
+    const cardDesc = document.createElement("p");
+    cardDesc.textContent = cardInfo.description;
+    cardDesc.classList.add("card-desc");
+
+    card.appendChild(cardTitle);
+    card.appendChild(cardDesc);
+
+    // add event listeners
+    card.addEventListener("dragstart", dragstart_handler);
+    card.addEventListener("dragenter", dragenter_handler);
+
+    // add it to the card array
+    cardList.push(card);
+
+    // add it as a child of the Very Important column (for now)
+    const column = document.getElementById("very-important-list");
+    column.appendChild(card);
+  }
+}
+
+/* Drag and drop handlers */
 
 function dragstart_handler(ev) {
   // Add the target element's id to the data transfer object
