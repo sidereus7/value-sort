@@ -30,13 +30,13 @@ httpRequest.open('GET', '/valuecards.json');
 httpRequest.send();
 
 function doStuff() {
-	if (httpRequest.readyState === XMLHttpRequest.DONE) {
-	  if (httpRequest.status === 200) {
-	    console.log(httpRequest.responseText);
-	  } else {
-	    console.log('There was a problem with the request.');
-	  }
-	}
+  if (httpRequest.readyState === XMLHttpRequest.DONE) {
+    if (httpRequest.status === 200) {
+      console.log(httpRequest.responseText);
+    } else {
+      console.log('There was a problem with the request.');
+    }
+  }
 }
 
 function dragstart_handler(ev) {
