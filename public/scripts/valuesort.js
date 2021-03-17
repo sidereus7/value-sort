@@ -4,12 +4,6 @@ var cardList = [];
 
 // Set up all event listeners
 window.addEventListener('DOMContentLoaded', () => {
-  // TODO: look at JS bubbling to add event listeners to
-  // dynamically created elements
-  const card = document.getElementById("nurturance");
-  card.addEventListener("dragstart", dragstart_handler);
-  card.addEventListener("dragenter", dragenter_handler);
-
   // add event listeners to the 3 columns
   let columns = document.querySelectorAll("div.column");
   columns.forEach(function(column) {
@@ -41,6 +35,7 @@ function doStuff() {
   }
 }
 
+// Creates cards from the given card objects
 function createCards(cardData) {
   for (var i = 0; i < cardData.length; i++) {
     // create a card DOM object
@@ -48,12 +43,13 @@ function createCards(cardData) {
 
     const card = document.createElement("div");
     card.classList.add("card");
+    card.classList.add("enqueued");
     card.setAttribute('id', cardInfo.title);
     card.setAttribute('draggable', 'true');
 
     // populate the title and description
     const cardTitle = document.createElement("p");
-    cardTitle.textContent = cardInfo.title;
+    cardTitle.textContent = cardInfo.title.toUpperCase();
     cardTitle.classList.add("card-title");
     
     const cardDesc = document.createElement("p");
@@ -66,14 +62,16 @@ function createCards(cardData) {
     // add event listeners
     card.addEventListener("dragstart", dragstart_handler);
     card.addEventListener("dragenter", dragenter_handler);
+    card.addEventListener("dragend", dragend_handler);
 
     // add it to the card array
     cardList.push(card);
-
-    // add it as a child of the Very Important column (for now)
-    const column = document.getElementById("very-important-list");
-    column.appendChild(card);
   }
+
+  // TODO: Change this shift() to pop() and load the list in backwards
+  // display the first card in the list to be sorted
+  const cardQueue = document.getElementById("card-queue");
+  cardQueue.appendChild(cardList.shift());  // guaranteed not to be empty???
 }
 
 /* Drag and drop handlers */
@@ -89,6 +87,25 @@ function dragenter_handler(ev) {
 
 function dragleave_handler(ev) {
   ev.currentTarget.style.background = "lightgray";
+}
+
+function dragend_handler(ev) {
+  // if a card is being moved from the card-queue to a column,
+  // replace it with a new card, if available
+  if (ev.currentTarget.classList.contains("enqueued")) {
+    const cardQueue = document.getElementById("card-queue");
+    if (cardList.length) {
+      var newCard = cardList.shift();
+      cardQueue.appendChild(newCard);
+    } else {
+      const finished = document.createElement("p");
+      finished.textContent = "All done!";
+      cardQueue.appendChild(finished);
+    }
+
+    // remove the class from that card
+    ev.currentTarget.classList.remove("enqueued");
+  }
 }
 
 function dragover_handler(ev) {
