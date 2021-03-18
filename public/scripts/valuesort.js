@@ -116,20 +116,29 @@ function dragover_handler(ev) {
 
 function drop_handler(ev) {
   ev.preventDefault();
-  
-  // move card into the target column and revert column color
-  const data = ev.dataTransfer.getData("text/plain");
-  ev.target.appendChild(document.getElementById(data));
+
+  const cardId = ev.dataTransfer.getData("text/plain");
+  var card = document.getElementById(cardId);
+  if (ev.target.className === "list-of-cards") {
+    drop_handler_helper(card, ev.target);
+  } else if (["card", "card-title", "card-desc"].includes(ev.target.className)) {
+    var closestList = ev.target.closest("div.list-of-cards");
+    if (closestList !== null) {
+      drop_handler_helper(card, closestList);
+    }
+  }
+
   ev.currentTarget.style.background = "lightgray";
+}
 
-
+function drop_handler_helper(card, list) {
   // TODO: create a shrunk card class and do that instead of
   // hard-coding styles in here. Naughty, Sara.
   // shrink the card and its text
-  var id = ev.dataTransfer.getData("text/plain");
-  var card = document.getElementById(id);
   card.style.height = "88px";
   card.style.width = "188px";
   card.querySelector(".card-title").style.fontSize = "16px";
   card.querySelector(".card-desc").style.fontSize = "12px";
+
+  list.appendChild(card);
 }
