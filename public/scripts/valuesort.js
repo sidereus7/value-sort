@@ -132,13 +132,9 @@ function drop_handler(ev) {
 }
 
 function drop_handler_helper(card, list) {
-  // TODO: create a shrunk card class and do that instead of
-  // hard-coding styles in here. Naughty, Sara.
-  // shrink the card and its text
-  card.style.height = "88px";
-  card.style.width = "188px";
-  card.querySelector(".card-title").style.fontSize = "16px";
-  card.querySelector(".card-desc").style.fontSize = "12px";
+  card.classList.add("shrunk-card");
+  card.querySelector(".card-title").classList.add("shrunk-card-title");
+  card.querySelector(".card-desc").classList.add("shrunk-card-desc");
 
   list.appendChild(card);
 }

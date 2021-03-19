@@ -74,3 +74,16 @@ h1 {
   font-size: 16px;
 
 }
+
+.shrunk-card {
+  height: 88px;
+  width: 188px;
+}
+
+.card .shrunk-card-title {
+  font-size: 16px;
+}
+
+.card .shrunk-card-desc {
+  font-size: 12px;
+}
