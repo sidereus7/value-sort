@@ -4,6 +4,9 @@ var cardList = [];
 
 // Set up all event listeners
 window.addEventListener('DOMContentLoaded', () => {
+  let aboutButton = document.getElementById("about-button");
+  aboutButton.addEventListener("click", showAboutInfo);
+
   // add event listeners to the 3 columns
   let columns = document.querySelectorAll("div.column");
   columns.forEach(function(column) {
@@ -74,6 +77,10 @@ function createCards(cardData) {
   cardQueue.appendChild(cardList.shift());  // guaranteed not to be empty???
 }
 
+function showAboutInfo(ev) {
+  alert("This card sort was made by the University of New Mexico.");
+}
+
 /* Drag and drop handlers */
 
 function dragstart_handler(ev) {
@@ -86,7 +93,7 @@ function dragenter_handler(ev) {
 }
 
 function dragleave_handler(ev) {
-  ev.currentTarget.style.background = "lightgray";
+  ev.currentTarget.style.background = "#A4A4A6";
 }
 
 function dragend_handler(ev) {
@@ -128,7 +135,7 @@ function drop_handler(ev) {
     }
   }
 
-  ev.currentTarget.style.background = "lightgray";
+  ev.currentTarget.style.background = "#A4A4A6";
 }
 
 function drop_handler_helper(card, list) {

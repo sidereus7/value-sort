@@ -4,7 +4,7 @@ const http = require('http');
 const fs = require('fs');
 
 var allowList = ['index.html', 'styles/valuesort.css', 'scripts/valuesort.js',
-                    'valuecards.json'];
+                    'valuecards.json', 'hotairballoonicon.png'];
 
 http.createServer(function (request, response) {
   var filename = request.url.substring(1); // remove leading "/"
@@ -18,6 +18,8 @@ http.createServer(function (request, response) {
     filename = "public/styles/valuesort.css";
   } else if (filename === "scripts/valuesort.js") {
     filename = "public/scripts/valuesort.js";
+  } else if (filename == "hotairballoonicon.png") {
+    filename = "public/images/hotairballoonicon.png";
   }
 
   var dotoffset = filename.lastIndexOf('.');

@@ -3,15 +3,68 @@ html {
 }
 
 body {
-  background: lightblue;
+  background-color: rgba(98, 99, 104, 1);
   display: flex;
   flex-direction: column;
   height: 100%;
-  overflow: hidden;
 }
 
 h1 {
   font-family: Helvetica, Arial, sans-serif;
+}
+
+.nav-bar {
+  background-color:  #BC1C30; /* rgba(74, 76, 79, 1); */
+  border: solid 2px #9B1622;
+  border-radius: 5px;
+  /* box-shadow: 1px 0.5px 0.5px black; */
+  padding: 4px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.nav-bar .nav-icon {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-start;
+}
+
+.nav-icon .nav-icon-image {
+  max-height: 50px;
+  max-width: 100%;
+}
+
+.nav-bar .nav-title {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-title h1 {
+  color: white;
+  /*font-family: Garamond, "Times New Roman", serif;*/
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  margin: 0px;
+}
+
+.nav-bar .nav-about {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+}
+
+.nav-about button {
+  background-color:rgba(165, 165, 167, 1);
+  border: 0px;
+  border-radius: 3px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  height: 50px;
+  padding-right: 10px;
+
+  justify-content: flex-end;
 }
 
 .columns {
@@ -22,7 +75,8 @@ h1 {
 
 .column {
   background: lightgray;
-  border: black solid 1px;
+  /* border: black solid 1px; */
+  border-radius: 5px;
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -31,6 +85,19 @@ h1 {
   margin-left: 1%;
   margin-right: 1%;
 }
+
+.column-title {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+#very-important, #important, #not-important {
+  background: rgba(164, 164, 166, 1) /*#A4A4A6 /* silver */
+}
+
+/*#very-important, #important, #not-important > h2 {
+  color: #4B4C51;
+}*/
 
 .list-of-cards {
   flex: 1;
@@ -48,12 +115,16 @@ h1 {
 
   min-height: 200px;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .card {
   background: white;
-  border: black solid 2px;
+  border: #4B4C51 4px;
+  border-radius: 5px;
   height: 175px;
+  margin: 10px;
+  padding: 10px;
   width: 375px;
 
   display: flex;
@@ -73,11 +144,17 @@ h1 {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 16px;
 
+  justify-content: center;
 }
 
 .shrunk-card {
   height: 88px;
   width: 188px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .card .shrunk-card-title {
@@ -86,4 +163,5 @@ h1 {
 
 .card .shrunk-card-desc {
   font-size: 12px;
+  text-align: center;
 }
