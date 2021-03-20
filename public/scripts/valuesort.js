@@ -5,7 +5,7 @@ var cardList = [];
 // Set up all event listeners
 window.addEventListener('DOMContentLoaded', () => {
   let aboutButton = document.getElementById("about-button");
-  aboutButton.addEventListener("click", showAboutInfo);
+  aboutButton.addEventListener("click", showAboutDialog);
 
   // add event listeners to the 3 columns
   let columns = document.querySelectorAll("div.column");
@@ -77,8 +77,14 @@ function createCards(cardData) {
   cardQueue.appendChild(cardList.shift());  // guaranteed not to be empty???
 }
 
-function showAboutInfo(ev) {
-  alert("This card sort was made by the University of New Mexico.");
+function showAboutDialog(ev) {
+  // display the modal
+  const aboutDialog = document.getElementById("about-dialog");
+  if (typeof aboutDialog.showModal === "function") {
+    aboutDialog.showModal();
+  } else {
+    alert("The <dialog> API is not supported by this browser");
+  }
 }
 
 /* Drag and drop handlers */
