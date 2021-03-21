@@ -4,8 +4,14 @@ var cardList = [];
 
 // Set up all event listeners
 window.addEventListener('DOMContentLoaded', () => {
-  let aboutButton = document.getElementById("about-button");
-  aboutButton.addEventListener("click", showAboutDialog);
+  let openAboutDialog = document.getElementById("about-button");
+  openAboutDialog.addEventListener("click", showAboutDialog);
+
+  let dialogArea = document.getElementById("about-dialog");
+  dialogArea.addEventListener("click", closeAboutDialog);
+
+  let closeDialogButton = document.getElementById("close-dialog");
+  closeDialogButton.addEventListener("click", closeAboutDialog);
 
   // add event listeners to the 3 columns
   let columns = document.querySelectorAll("div.column");
@@ -77,6 +83,8 @@ function createCards(cardData) {
   cardQueue.appendChild(cardList.shift());  // guaranteed not to be empty???
 }
 
+// TODO: This should probably change from a dialog to something that is
+// compatible with all browsers (Safari, Firefox, etc.)
 function showAboutDialog(ev) {
   // display the modal
   const aboutDialog = document.getElementById("about-dialog");
@@ -84,6 +92,27 @@ function showAboutDialog(ev) {
     aboutDialog.showModal();
   } else {
     alert("The <dialog> API is not supported by this browser");
+  }
+}
+
+// close the "about" dialog when you click outside of the dialog,
+// on its backdrop
+function closeAboutDialog(ev) {
+  var clickTarget = ev.target;
+
+  // add check to make sure it is an HTMLElement??
+  // or is null an ok answer here????
+  if (clickTarget.tagName === 'BUTTON') {
+    var dialog = document.getElementById("about-dialog");
+    dialog.close();
+  } else if (clickTarget.tagName === 'DIALOG') {
+
+    var dialog = ev.target;
+    const rect = dialog.getBoundingClientRect();
+    if (ev.clientY < rect.top || ev.clientY > rect.bottom ||
+            ev.clientX < rect.left || ev.clientX > rect.right) {
+        dialog.close();
+    }
   }
 }
 

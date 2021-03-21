@@ -67,13 +67,45 @@ h1 {
   justify-content: flex-end;
 }
 
+#about-dialog {
+  border-radius: 5px;
+  padding: 8px;
+}
+
+#about-dialog::backdrop {
+  background: rgba(0, 0, 0, .5);
+}
+
 #about-dialog div {
+  display: flex;
+  flex-direction: column;
+
   width: 500px;
 }
 
 #about-dialog p {
   font-family: Helvetica, Arial, sans-serif;
   line-height: 1.5;
+  margin: 0px 16px 16px 16px; // top right bottom left
+}
+
+#close-dialog {
+  align-self: flex-end;
+
+  background: transparent;
+  border: none;
+  color: #626368;
+  font-size: 18pt;
+  font-weight: bold;
+}
+
+#close-dialog:hover {
+  color: #000000;
+}
+
+/* TODO: Why do I need this to avoid blue outlining?? */
+#close-dialog:focus {
+  outline: none;
 }
 
 .columns {
