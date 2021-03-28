@@ -1,20 +1,20 @@
 'use strict';
 
-var cardList = [];
+let cardList = [];
 
 // Set up all event listeners
 window.addEventListener('DOMContentLoaded', () => {
-  let openAboutDialog = document.getElementById("about-button");
+  const openAboutDialog = document.getElementById("about-button");
   openAboutDialog.addEventListener("click", showAboutDialog);
 
-  let dialogArea = document.getElementById("about-dialog");
+  const dialogArea = document.getElementById("about-dialog");
   dialogArea.addEventListener("click", closeAboutDialog);
 
-  let closeDialogButton = document.getElementById("close-dialog");
+  const closeDialogButton = document.getElementById("close-dialog");
   closeDialogButton.addEventListener("click", closeAboutDialog);
 
   // add event listeners to the 3 columns
-  let columns = document.querySelectorAll("div.column");
+  const columns = document.querySelectorAll("div.column");
   columns.forEach(function(column) {
     column.addEventListener("dragover", dragover_handler);
     column.addEventListener("dragleave", dragleave_handler);
@@ -23,20 +23,20 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // Request valuecards.json file and parse results
-var httpRequest = new XMLHttpRequest();
+const httpRequest = new XMLHttpRequest();
 
 if (!httpRequest) {
   alert('Giving up :( Cannot create an XMLHTTP instance');
 }
 
-httpRequest.addEventListener("load", doStuff);
+httpRequest.addEventListener("load", fetchCardData);
 httpRequest.open('GET', '/valuecards.json');
 httpRequest.send();
 
-function doStuff() {
+function fetchCardData() {
   if (httpRequest.readyState === XMLHttpRequest.DONE) {
     if (httpRequest.status === 200) {
-      var cardData = JSON.parse(httpRequest.responseText);
+      const cardData = JSON.parse(httpRequest.responseText);
       createCards(cardData['cards']);
     } else {
       console.log('There was a problem with the request.');
@@ -46,9 +46,9 @@ function doStuff() {
 
 // Creates cards from the given card objects
 function createCards(cardData) {
-  for (var i = 0; i < cardData.length; i++) {
+  for (let i = 0; i < cardData.length; i++) {
     // create a card DOM object
-    var cardInfo = cardData[i];
+    let cardInfo = cardData[i];
 
     const card = document.createElement("div");
     card.classList.add("card");
@@ -98,16 +98,15 @@ function showAboutDialog(ev) {
 // close the "about" dialog when you click outside of the dialog,
 // on its backdrop
 function closeAboutDialog(ev) {
-  var clickTarget = ev.target;
+  const clickTarget = ev.target;
 
   // add check to make sure it is an HTMLElement??
   // or is null an ok answer here????
   if (clickTarget.tagName === 'BUTTON') {
-    var dialog = document.getElementById("about-dialog");
+    const dialog = document.getElementById("about-dialog");
     dialog.close();
   } else if (clickTarget.tagName === 'DIALOG') {
-
-    var dialog = ev.target;
+    const dialog = ev.target;
     const rect = dialog.getBoundingClientRect();
     if (ev.clientY < rect.top || ev.clientY > rect.bottom ||
             ev.clientX < rect.left || ev.clientX > rect.right) {
@@ -128,6 +127,7 @@ function dragenter_handler(ev) {
 }
 
 function dragleave_handler(ev) {
+  // TODO: Change this to be a CSS class style
   ev.currentTarget.style.background = "#A4A4A6";
 }
 
@@ -137,10 +137,10 @@ function dragend_handler(ev) {
   if (ev.currentTarget.classList.contains("enqueued")) {
     const cardQueue = document.getElementById("card-queue");
     if (cardList.length) {
-      var newCard = cardList.shift();
+      let newCard = cardList.shift();
       cardQueue.appendChild(newCard);
     } else {
-      const finished = document.createElement("p");
+      let finished = document.createElement("p");
       finished.textContent = "All done!";
       cardQueue.appendChild(finished);
     }
@@ -160,16 +160,17 @@ function drop_handler(ev) {
   ev.preventDefault();
 
   const cardId = ev.dataTransfer.getData("text/plain");
-  var card = document.getElementById(cardId);
+  const card = document.getElementById(cardId);
   if (ev.target.className === "list-of-cards") {
     drop_handler_helper(card, ev.target);
   } else if (["card", "card-title", "card-desc"].includes(ev.target.className)) {
-    var closestList = ev.target.closest("div.list-of-cards");
+    const closestList = ev.target.closest("div.list-of-cards");
     if (closestList !== null) {
       drop_handler_helper(card, closestList);
     }
   }
 
+  // TODO: Change this to a CSS class style
   ev.currentTarget.style.background = "#A4A4A6";
 }
 
