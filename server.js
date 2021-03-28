@@ -4,7 +4,7 @@ const http = require('http');
 const fs = require('fs');
 
 var allowList = ['index.html', 'styles/valuesort.css', 'scripts/valuesort.js',
-                    'valuecards.json', 'hotairballoonicon.png'];
+                    'valuecards.json', 'hotairballoonicon.png', 'favicon.png'];
 
 http.createServer(function (request, response) {
   var filename = request.url.substring(1); // remove leading "/"
