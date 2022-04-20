@@ -1,5 +1,7 @@
 'use strict';
 
+const cardFileName = "/valuecards_small.json"; // "/valuecards.json";
+
 let cardList = [];
 
 // Set up all event listeners
@@ -30,7 +32,7 @@ if (!httpRequest) {
 }
 
 httpRequest.addEventListener("load", fetchCardData);
-httpRequest.open('GET', '/valuecards.json');
+httpRequest.open('GET', cardFileName);
 httpRequest.send();
 
 function fetchCardData() {
