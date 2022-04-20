@@ -1,0 +1,28 @@
+{
+  "cards": [
+    {
+      "title": "acceptance",
+      "description": "to be accepted as I am"
+    },
+
+    {
+      "title": "accuracy",
+      "description": "to be accurate in my opinions and beliefs"
+    },
+    
+    {
+      "title": "achievement",
+      "description": "to have important accomplishments"
+    },
+    
+    {
+      "title": "adventure",
+      "description": "to have new and exciting experiences"
+    },
+    
+    {
+      "title": "attractiveness",
+      "description": "to be physically attractive"
+    }
+  ]
+}

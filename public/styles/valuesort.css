@@ -13,6 +13,16 @@ h1 {
   font-family: Helvetica, Arial, sans-serif;
 }
 
+.column-title {
+  background-color: rgba(65, 136, 146, 1);
+  border-radius: 3px;
+  display: inline-block;
+  height: 50px;
+  line-height: 50px;
+  margin-top: 0;
+  vertical-align: middle;
+}
+
 .container {
   display: flex;
   flex-direction: column;
