@@ -16,11 +16,11 @@ window.addEventListener('DOMContentLoaded', () => {
   closeDialogButton.addEventListener("click", closeAboutDialog);
 
   // add event listeners to the 3 columns
-  const columns = document.querySelectorAll("div.column");
-  columns.forEach(function(column) {
-    column.addEventListener("dragover", dragover_handler);
-    column.addEventListener("dragleave", dragleave_handler);
-    column.addEventListener("drop", drop_handler);
+  const lists = document.querySelectorAll("div.list-of-cards");
+  lists.forEach(function(list) {
+    list.addEventListener("dragover", dragover_handler);
+    list.addEventListener("dragleave", dragleave_handler);
+    list.addEventListener("drop", drop_handler);
   });
 });
 
@@ -134,6 +134,11 @@ function dragleave_handler(ev) {
 }
 
 function dragend_handler(ev) {
+  // do nothing if not dropped into droppable location
+  if (ev.dataTransfer.dropEffect == "none") {
+    return;
+  }
+
   // if a card is being moved from the card-queue to a column,
   // replace it with a new card, if available
   if (ev.currentTarget.classList.contains("enqueued")) {
@@ -165,11 +170,6 @@ function drop_handler(ev) {
   const card = document.getElementById(cardId);
   if (ev.target.className === "list-of-cards") {
     drop_handler_helper(card, ev.target);
-  } else if (["card", "card-title", "card-desc"].includes(ev.target.className)) {
-    const closestList = ev.target.closest("div.list-of-cards");
-    if (closestList !== null) {
-      drop_handler_helper(card, closestList);
-    }
   }
 
   // TODO: Change this to a CSS class style
