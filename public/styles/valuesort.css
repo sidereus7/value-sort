@@ -22,6 +22,7 @@
 :root {
   /* Jackie's Site: https://nwcbt.com/ */
   --minty: rgba(93, 177, 168, 1);
+  --soft-navy: #417D9A;
   --blackish: rgba(33, 33, 33, 1);
   --silver: rgba(167, 168, 170, 1);
   --dark-silver: rgba(133, 132, 134, 1);
@@ -30,7 +31,7 @@
   --nav-bar: var(--minty);
   --nav-bar-text: white;
   --card: white;
-  --card-border: var(--minty);
+  --card-border: var(--soft-navy);
   --shrunk-card: white;
   --main-text: var(--blackish);
   --column: rgba(255, 255, 255, 0.5);
@@ -174,10 +175,13 @@ body {
   color: var(--column-title-text);
   display: inline-block;
   font-family: "Proxima Nova", Arial, sans-serif;
+  font-size: 18pt;
   font-weight: bold;
   height: 50px;
+  letter-spacing: .1rem;
   line-height: 50px;
-  margin: 0;
+  margin: 0 0 5px 0;
+  text-transform: uppercase;
   vertical-align: middle;
 }
 
@@ -255,6 +259,8 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
+  margin: 3px;
 }
 
 .card .shrunk-card-title {
