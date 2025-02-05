@@ -1,26 +1,83 @@
+/* Remove nav bar */
+/* Use Jackie's website as a style/color reference */
+
+@font-face {
+  font-family: "Proxima Nova";
+  src:
+    local("Proxima Nova"),
+    url("../fonts/proximanova_regular.ttf");
+}
+
+@font-face {
+  font-family: "Proxima Nova Bold";
+  src:
+    local("Proxima Nova Bold"),
+    url("../fonts/proximanova_bold.otf");
+}
+
+@font-face {
+  font-family: "Garamond EB";
+  src:
+    local("Garamond EB"),
+    url("../fonts/EBGaramond-Regular.ttf");
+}
+
+:root {
+  /* primary UNM colors */
+  /* https://brand.unm.edu/brand-style/color-palette/index.html */
+  --cherry: rgba(186, 12, 47, 1);
+  --dark-cherry: rgba(143, 38, 41, 1);
+  --silver: rgba(167, 168, 170, 1);
+  --dark-silver: rgba(133, 132, 134, 1);
+  --lobo-gray: rgba(99, 102, 106, 1);
+  --dark-lobo-gray: rgba(77, 78, 81, 1);
+
+  /* secondary UNM colors */
+  /* https://brand.unm.edu/brand-style/index.html */
+  --turquoise: rgba(0, 122, 134, 1);
+  --dark-turquoise: rgba(48, 111, 117, 1);
+  --high-noon: rgba(255, 198, 0, 1);
+  --sandia-sunset: rgba(237, 139, 0, 1);
+  --terra: rgba(192, 81, 49, 1);
+  --mesa: rgba(214, 164, 97, 1);
+  --green-chile: rgba(168, 170, 25, 1);
+  --deep-dusk: rgba(138, 56, 124, 1);
+
+  /* Chat GPT */
+  --warm-sand: #EADDC6;
+  --charcoal-black: rgba(51, 51, 51, 1);
+  --soft-teal: #b9f9ff; /* #C3F3F3; */
+
+  /* Jackie */
+  --minty: rgba(93, 177, 168, 1);
+  --blackish: rgba(33, 33, 33, 1);
+
+  --background-color: white;
+  --button: var(--silver);
+  --button-border: var(--dark-lobo-gray);
+  --nav-bar: var(--minty);
+  --nav-bar-text: white;
+  --card: white;
+  --card-border: var(--turquoise);
+  --shrunk-card: white;
+  --main-text: var(--charcoal-black);
+  --column: rgba(255, 255, 255, 0.5);
+  --column-border: var(--dark-silver);
+  --column-title: var(--minty);
+  --column-title-text: white;
+}
+
 html {
   height: 100%;
 }
 
 body {
-  background-color: rgba(0, 136, 146, .15); /* turquoise */
+  background-image: url("../images/deskbackground.jpg");
+  background-size: cover;
   display: flex;
   flex-direction: column;
+  font-family: "Proxima Nova", Arial, sans-serif;
   height: 100%;
-}
-
-h1 {
-  font-family: Helvetica, Arial, sans-serif;
-}
-
-.column-title {
-  background-color: rgba(65, 136, 146, 1);
-  border-radius: 3px;
-  display: inline-block;
-  height: 50px;
-  line-height: 50px;
-  margin-top: 0;
-  vertical-align: middle;
 }
 
 .container {
@@ -37,55 +94,40 @@ h1 {
 }
 
 .nav-bar {
-  background-color: rgba(0, 136, 146, 1); /* #BC1C30; */
-  border: solid 2px #017075;
-  padding: 6px;
-
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  align-items: center;  /* Aligns items vertically */
+  justify-content: center; /* Centers everything initially */
+  position: relative; /* Needed for absolute positioning */
+  background-color: var(--nav-bar);
+  padding: 10px 20px;
 }
 
-.nav-bar .nav-icon {
-  display: flex;
-  flex-grow: 1;
-  justify-content: flex-start;
+/* Push icon to the left */
+.nav-icon {
+  position: absolute;
+  left: 20px; /* Adjust as needed */
 }
 
-.nav-icon .nav-icon-image {
-  max-height: 50px;
-  max-width: 100%;
-}
-
-.nav-bar .nav-title {
-  display: flex;
-  justify-content: center;
+/* Ensure the h1 is centered */
+.nav-title {
+  flex: 1; /* Takes up remaining space */
+  text-align: center;
 }
 
 .nav-title h1 {
+  margin: 0;
+  font-family: "Proxima Nova Bold", Arial, sans-serif;
+  font-size: 1.8em;
+  letter-spacing: .2rem;
+  text-transform: uppercase;
   color: white;
-  /*font-family: Garamond, "Times New Roman", serif;*/
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 24px;
-  margin: 0px;
 }
 
-.nav-bar .nav-about {
-  display: flex;
-  justify-content: flex-end;
-  flex-grow: 1;
-}
-
-.nav-about button {
-  background-color:rgba(165, 165, 167, 1);
-  border: solid 2px #4B4C50;
-  border-radius: 3px;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  height: 50px;
-  padding-right: 10px;
-
-  justify-content: flex-end;
+/* Optional: Adjust the icon size */
+.nav-icon img {
+  max-height: 50px;
+  max-width: 100%;
+  cursor: pointer;
 }
 
 #about-dialog {
@@ -94,7 +136,7 @@ h1 {
 }
 
 #about-dialog::backdrop {
-  background: rgba(0, 0, 0, .5);
+  background: rgba(0, 0, 0, .5); /* TODO: charcoal-black with opacity */
 }
 
 #about-dialog div {
@@ -105,9 +147,9 @@ h1 {
 }
 
 #about-dialog p {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "Proxima Nova", Arial, sans-serif;
   line-height: 1.5;
-  margin: 0px 16px 16px 16px; // top right bottom left
+  margin: 0px 16px 16px 16px; /* top right bottom left */
 }
 
 #close-dialog {
@@ -121,7 +163,7 @@ h1 {
 }
 
 #close-dialog:hover {
-  color: #000000;
+  color: var(--charcoal-black);
 }
 
 /* TODO: Why do I need this to avoid blue outlining?? */
@@ -133,28 +175,46 @@ h1 {
   display: flex;
   justify-content: space-around;
 
-  min-height: 100%;
+  /*min-height: 100%;*/
+  height: 55%;
   padding: 10px;
 }
 
 .column {
-  background: lightgray;
-  border: solid 2px #4B4C50;
-  border-radius: 5px;
+  background: var(--column);
+  border: solid 2px var(--column-border);
+  border-radius: 4px;
   display: flex;
   flex: 1;
   flex-direction: column;
 
   margin: 10px;
+
+  /* for popout effect */
+  transition: transform 0.4s ease, box-shadow 0.2s ease;
+}
+
+/* for popout effect */
+.column.pop-out {
+  transform: translateX(-5px) translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
 }
 
 .column-title {
-  font-family: Helvetica, Arial, sans-serif;
+  background-color: var(--column-title);
+  border-radius: 1px;
+  color: var(--column-title-text);
+  display: inline-block;
+  font-family: "Proxima Nova", Arial, sans-serif;
   font-weight: bold;
+  height: 50px;
+  line-height: 50px;
+  margin: 0;
+  vertical-align: middle;
 }
 
 #very-important, #important, #not-important {
-  background: rgba(164, 164, 166, 1) /*#A4A4A6 /* silver */
+  background: var(--column);
 }
 
 /*#very-important, #important, #not-important > h2 {
@@ -166,28 +226,32 @@ h1 {
   overflow-y: scroll;
 }
 
+/* for popout effect */
+.column.pop-out {
+  transform: translateX(-5px) translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
 .column h2 {
   text-align: center;
 }
 
 #card-queue {
-  position: fixed;
   bottom: 0;
+  height: 33%;
   width: 100%;
 
   display: flex;
   justify-content: center;
   align-self: flex-end;
   align-items: center;
-
-  background-color: rgba(0, 0, 0, .5); /* rgba(98, 99, 104, 1); */
-  min-height: 200px;
 }
 
 .card {
-  background: white;
-  border: #4B4C51 4px;
+  background: var(--card);
+  border: solid 3px var(--card-border);
   border-radius: 5px;
+  color: var(--charcoal-black);
   height: 150px;
   margin: 10px;
   padding: 10px;
@@ -200,22 +264,24 @@ h1 {
 }
 
 .card-title {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "Garamond EB", Arial, sans-serif;
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 0px;
 }
 
 .card-desc {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "Proxima Nova", Arial, sans-serif;
   font-size: 16px;
 
   justify-content: center;
 }
 
 .shrunk-card {
-  height: 88px;
-  width: 188px;
+  background-color: var(--shrunk-card);
+
+  height: auto;
+  width: 33%;
 
   display: flex;
   flex-direction: column;
@@ -225,6 +291,7 @@ h1 {
 
 .card .shrunk-card-title {
   font-size: 16px;
+  margin: 0px;
 }
 
 .card .shrunk-card-desc {

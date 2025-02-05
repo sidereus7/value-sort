@@ -5,23 +5,19 @@
 
     <link rel="shortcut icon" href="hotairballoon_favicon.png">
     <link href="styles/valuesort.css" rel="stylesheet">
-    <script src="scripts/valuesort.js" rel="text/javascript"></script>
+    <script defer src="scripts/valuesort.js" rel="text/javascript"></script>
   </head>
 
   <body>
     <div class="container">
       <div class="nav-bar">
-        <div class="nav-icon">
-          <img class="nav-icon-image" src="hotairballoonicon.png" alt="A colorful hot air balloon">
-        </div>
+        <span class="nav-icon">
+          <img id="about-button" class="nav-icon-image" src="images/hotairballoonicon.png" alt="A colorful hot air balloon">
+        </span>
 
-        <div class="nav-title">
+        <span class="nav-title">
           <h1>Personal Values Card Sort</h1>
-        </div>
-
-        <div class="nav-about">
-          <button id="about-button" type="button">About</button>
-        </div>
+        </span>
       </div>
 
       <!-- TODO: This should probably change from a dialog to something that is
@@ -37,6 +33,11 @@
           </p>
         </div>
       </dialog>
+
+      <!-- TODO: what to display here when done?? -->
+      <!-- Button that leads to next stage. -->
+      <div id="card-queue">
+      </div>
 
       <div class="columns">
         <div id="very-important" class="column">
@@ -59,10 +60,6 @@
           <div id="not-important-list" class="list-of-cards">
           </div>
         </div>
-      </div>
-
-          <!-- TODO: what to display here when done?? -->
-      <div id="card-queue">
       </div>
     </div>
   </body>

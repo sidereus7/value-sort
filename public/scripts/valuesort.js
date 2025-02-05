@@ -1,6 +1,9 @@
+// TODO: Sara, you reintroduced a bad error where dragging and dropping onto
+// a card in the column/list/thing makes the drag/drop fail and 2 cards display
+
 'use strict';
 
-const cardFileName = "/valuecards_small.json"; // "/valuecards.json";
+const cardFileName = "/valuecards.json"; // "/valuecards_small.json";
 
 let cardList = [];
 
@@ -119,20 +122,18 @@ function closeAboutDialog(ev) {
 
 /* Drag and drop handlers */
 
+/**************************** CARD HANDLERS ****************************/
 function dragstart_handler(ev) {
   // Add the target element's id to the data transfer object
   ev.dataTransfer.setData("text/plain", ev.target.id);
 }
 
+// called by card
 function dragenter_handler(ev) {
   ev.dataTransfer.dropEffect = "move";
 }
 
-function dragleave_handler(ev) {
-  // TODO: Change this to be a CSS class style
-  ev.currentTarget.style.background = "#A4A4A6";
-}
-
+// called by card
 function dragend_handler(ev) {
   // do nothing if not dropped into droppable location
   if (ev.dataTransfer.dropEffect == "none") {
@@ -157,29 +158,37 @@ function dragend_handler(ev) {
   }
 }
 
+/**************************** COLUMN HANDLERS ****************************/
 function dragover_handler(ev) {
   ev.preventDefault();
-  ev.dataTransfer.dropEffect = "move";
-  ev.currentTarget.style.background = "gray";
+
+  const column = ev.target.parentElement;
+  column.classList.add("pop-out");
+}
+
+function dragleave_handler(ev) {
+  const column = ev.target.parentElement;
+  column.classList.remove("pop-out");
 }
 
 function drop_handler(ev) {
   ev.preventDefault();
+
+  const column = ev.target.parentElement;
+  column.classList.remove("pop-out");
 
   const cardId = ev.dataTransfer.getData("text/plain");
   const card = document.getElementById(cardId);
   if (ev.target.className === "list-of-cards") {
     drop_handler_helper(card, ev.target);
   }
-
-  // TODO: Change this to a CSS class style
-  ev.currentTarget.style.background = "#A4A4A6";
 }
 
 function drop_handler_helper(card, list) {
   card.classList.add("shrunk-card");
   card.querySelector(".card-title").classList.add("shrunk-card-title");
-  card.querySelector(".card-desc").classList.add("shrunk-card-desc");
+
+  card.removeChild(card.querySelector(".card-desc"));
 
   list.appendChild(card);
 }
