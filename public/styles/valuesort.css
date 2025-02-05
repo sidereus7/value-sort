@@ -23,44 +23,19 @@
 }
 
 :root {
-  /* primary UNM colors */
-  /* https://brand.unm.edu/brand-style/color-palette/index.html */
-  --cherry: rgba(186, 12, 47, 1);
-  --dark-cherry: rgba(143, 38, 41, 1);
-  --silver: rgba(167, 168, 170, 1);
-  --dark-silver: rgba(133, 132, 134, 1);
-  --lobo-gray: rgba(99, 102, 106, 1);
-  --dark-lobo-gray: rgba(77, 78, 81, 1);
-
-  /* secondary UNM colors */
-  /* https://brand.unm.edu/brand-style/index.html */
-  --turquoise: rgba(0, 122, 134, 1);
-  --dark-turquoise: rgba(48, 111, 117, 1);
-  --high-noon: rgba(255, 198, 0, 1);
-  --sandia-sunset: rgba(237, 139, 0, 1);
-  --terra: rgba(192, 81, 49, 1);
-  --mesa: rgba(214, 164, 97, 1);
-  --green-chile: rgba(168, 170, 25, 1);
-  --deep-dusk: rgba(138, 56, 124, 1);
-
-  /* Chat GPT */
-  --warm-sand: #EADDC6;
-  --charcoal-black: rgba(51, 51, 51, 1);
-  --soft-teal: #b9f9ff; /* #C3F3F3; */
-
-  /* Jackie */
+  /* https://nwcbt.com/ */
   --minty: rgba(93, 177, 168, 1);
   --blackish: rgba(33, 33, 33, 1);
+  --silver: rgba(167, 168, 170, 1);
+  --dark-silver: rgba(133, 132, 134, 1);
 
   --background-color: white;
-  --button: var(--silver);
-  --button-border: var(--dark-lobo-gray);
   --nav-bar: var(--minty);
   --nav-bar-text: white;
   --card: white;
-  --card-border: var(--turquoise);
+  --card-border: var(--minty);
   --shrunk-card: white;
-  --main-text: var(--charcoal-black);
+  --main-text: var(--blackish);
   --column: rgba(255, 255, 255, 0.5);
   --column-border: var(--dark-silver);
   --column-title: var(--minty);
