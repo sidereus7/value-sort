@@ -179,8 +179,11 @@ function drop_handler(ev) {
 
   const cardId = ev.dataTransfer.getData("text/plain");
   const card = document.getElementById(cardId);
-  if (ev.target.className === "list-of-cards") {
-    drop_handler_helper(card, ev.target);
+
+  // find the closest list to drop into, if present
+  const dropZone = ev.target.closest(".list-of-cards");
+  if (dropZone) {
+    drop_handler_helper(card, dropZone);
   }
 }
 
