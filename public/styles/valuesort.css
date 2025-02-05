@@ -1,6 +1,3 @@
-/* Remove nav bar */
-/* Use Jackie's website as a style/color reference */
-
 @font-face {
   font-family: "Proxima Nova";
   src:
@@ -23,7 +20,7 @@
 }
 
 :root {
-  /* https://nwcbt.com/ */
+  /* Jackie's Site: https://nwcbt.com/ */
   --minty: rgba(93, 177, 168, 1);
   --blackish: rgba(33, 33, 33, 1);
   --silver: rgba(167, 168, 170, 1);
@@ -70,22 +67,20 @@ body {
 
 .nav-bar {
   display: flex;
-  align-items: center;  /* Aligns items vertically */
-  justify-content: center; /* Centers everything initially */
-  position: relative; /* Needed for absolute positioning */
+  align-items: center;
+  justify-content: center;
+  position: relative;
   background-color: var(--nav-bar);
   padding: 10px 20px;
 }
 
-/* Push icon to the left */
 .nav-icon {
   position: absolute;
-  left: 20px; /* Adjust as needed */
+  left: 20px;
 }
 
-/* Ensure the h1 is centered */
 .nav-title {
-  flex: 1; /* Takes up remaining space */
+  flex: 1;
   text-align: center;
 }
 
@@ -98,7 +93,6 @@ body {
   color: white;
 }
 
-/* Optional: Adjust the icon size */
 .nav-icon img {
   max-height: 50px;
   max-width: 100%;
@@ -111,7 +105,7 @@ body {
 }
 
 #about-dialog::backdrop {
-  background: rgba(0, 0, 0, .5); /* TODO: charcoal-black with opacity */
+  background: rgba(0, 0, 0, .5);
 }
 
 #about-dialog div {
@@ -150,7 +144,6 @@ body {
   display: flex;
   justify-content: space-around;
 
-  /*min-height: 100%;*/
   height: 55%;
   padding: 10px;
 }
@@ -191,10 +184,6 @@ body {
 #very-important, #important, #not-important {
   background: var(--column);
 }
-
-/*#very-important, #important, #not-important > h2 {
-  color: #4B4C51;
-}*/
 
 .list-of-cards {
   align-content: flex-start;
