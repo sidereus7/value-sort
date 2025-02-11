@@ -1,5 +1,5 @@
-// TODO: Sara, you reintroduced a bad error where dragging and dropping onto
-// a card in the column/list/thing makes the drag/drop fail and 2 cards display
+// TODO: Pop out behavior doesn't occur when hovering a card over another
+//       card. Try something with closestTarget?? 
 
 'use strict';
 
