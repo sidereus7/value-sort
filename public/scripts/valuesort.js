@@ -82,6 +82,9 @@ function createCards(cardData) {
     cardList.push(card);
   }
 
+  // shuffle ordering of cards
+  shuffleList(cardList);
+
   // TODO: Change this shift() to pop() and load the list in backwards
   // display the first card in the list to be sorted
   const cardQueue = document.getElementById("card-queue");
@@ -194,4 +197,16 @@ function drop_handler_helper(card, list) {
   card.removeChild(card.querySelector(".card-desc"));
 
   list.appendChild(card);
+}
+
+// For shuffling the list of cards at initialization
+function shuffleList(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+      // Generate a random index from 0 to i
+      const j = Math.floor(Math.random() * (i + 1));
+
+      // Swap elements at i and j
+      [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
 }
