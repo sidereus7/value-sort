@@ -166,19 +166,19 @@ function dragover_handler(ev) {
   ev.preventDefault();
 
   const column = ev.target.parentElement;
-  column.classList.add("pop-out");
+  column.classList.add("over");
 }
 
 function dragleave_handler(ev) {
   const column = ev.target.parentElement;
-  column.classList.remove("pop-out");
+  column.classList.remove("over");
 }
 
 function drop_handler(ev) {
   ev.preventDefault();
 
   const column = ev.target.parentElement;
-  column.classList.remove("pop-out");
+  column.classList.remove("over");
 
   const cardId = ev.dataTransfer.getData("text/plain");
   const card = document.getElementById(cardId);

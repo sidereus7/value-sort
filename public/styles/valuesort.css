@@ -159,14 +159,14 @@ body {
 
   margin: 10px;
 
-  /* for popout effect */
-  transition: transform 0.4s ease, box-shadow 0.2s ease;
+  /* for hover effect */
+  transition: background-color 0.2s ease-in-out;
 }
 
-/* for popout effect */
-.column.pop-out {
-  transform: translateX(-5px) translateY(-5px);
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+/* for hover effect */
+.column.over {
+  border-color: white;
+  background-color: #e8f5e9;
 }
 
 .column-title {
