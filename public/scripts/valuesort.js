@@ -191,11 +191,14 @@ function drop_handler(ev) {
 }
 
 function drop_handler_helper(card, list) {
-  card.classList.add("shrunk-card");
-  card.querySelector(".card-title").classList.add("shrunk-card-title");
-
-  card.removeChild(card.querySelector(".card-desc"));
-
+  // moving from the queue into a list
+  if (!card.classList.contains("shrunk-card")) {
+    card.classList.add("shrunk-card");
+    card.querySelector(".card-title").classList.add("shrunk-card-title");
+  
+    card.removeChild(card.querySelector(".card-desc"));
+  }
+  
   list.appendChild(card);
 }
 
