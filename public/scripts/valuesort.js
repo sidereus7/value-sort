@@ -197,6 +197,9 @@ function drop_handler_helper(card, list) {
     card.querySelector(".card-title").classList.add("shrunk-card-title");
   
     card.removeChild(card.querySelector(".card-desc"));
+
+    let countSpan = document.getElementById("card-count");
+    countSpan.innerHTML = parseInt(countSpan.innerHTML) + 1;
   }
   
   list.appendChild(card);
