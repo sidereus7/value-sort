@@ -25,6 +25,17 @@ window.addEventListener('DOMContentLoaded', () => {
     list.addEventListener("dragleave", dragleave_handler);
     list.addEventListener("drop", drop_handler);
   });
+
+  const modal = document.getElementById("modal");
+  const closeModal = document.getElementById("closeModal");
+
+  // Show the modal when the page loads
+  modal.style.display = "flex";
+
+  // Hide the modal when the "OK" button is clicked
+  closeModal.addEventListener("click", function () {
+      modal.style.display = "none";
+  });
 });
 
 // Request valuecards.json file and parse results
