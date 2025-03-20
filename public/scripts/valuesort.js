@@ -153,51 +153,53 @@ function dragend_handler(ev) {
   if (ev.dataTransfer.dropEffect == "none") {
     return;
   }
-
-  // if a card is being moved from the card-queue to a column,
-  // replace it with a new card, if available
-  if (ev.currentTarget.classList.contains("enqueued")) {
-    const cardQueue = document.getElementById("card-queue");
-    if (cardList.length) {
-      let newCard = cardList.shift();
-      cardQueue.appendChild(newCard);
-    } else {
-      let finished = document.createElement("p");
-      finished.textContent = "All done!";
-      cardQueue.appendChild(finished);
-    }
-
-    // remove the class from that card
-    ev.currentTarget.classList.remove("enqueued");
-  }
 }
 
 /**************************** COLUMN HANDLERS ****************************/
 function dragover_handler(ev) {
   ev.preventDefault();
 
-  const column = ev.target.parentElement;
-  column.classList.add("over");
+  const column = ev.target.closest(".list-of-cards");
+  if (column) {
+    column.classList.add("over");
+  }
 }
 
 function dragleave_handler(ev) {
-  const column = ev.target.parentElement;
-  column.classList.remove("over");
+  ev.preventDefault();
+
+  const column = ev.target.closest(".list-of-cards");
+  if (column) {
+    column.classList.remove("over");
+  }
 }
 
 function drop_handler(ev) {
   ev.preventDefault();
 
-  const column = ev.target.parentElement;
-  column.classList.remove("over");
+  const column = ev.target.closest(".list-of-cards");
+  if (column) {
+    column.classList.remove("over");
 
-  const cardId = ev.dataTransfer.getData("text/plain");
-  const card = document.getElementById(cardId);
+    const cardId = ev.dataTransfer.getData("text/plain");
+    const card = document.getElementById(cardId);
 
-  // find the closest list to drop into, if present
-  const dropZone = ev.target.closest(".list-of-cards");
-  if (dropZone) {
-    drop_handler_helper(card, dropZone);
+    // remove card from the queue and replace with next card
+    if (card.classList.contains("enqueued")) {
+      const cardQueue = document.getElementById("card-queue");
+      if (cardList.length) {
+        let newCard = cardList.shift();
+        cardQueue.appendChild(newCard);
+      } else {
+        let finished = document.createElement("p");
+        finished.textContent = "All done!";
+        cardQueue.appendChild(finished);
+      }
+
+      card.classList.remove("enqueued");
+    }
+
+    drop_handler_helper(card, column);
   }
 }
 

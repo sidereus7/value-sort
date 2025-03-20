@@ -258,12 +258,14 @@ body {
 
   justify-content: center;
   text-align: center;
+
+  pointer-events: none;
 }
 
 .shrunk-card {
   background-color: var(--shrunk-card);
 
-  height: fit-content;
+  height: 25px;
   width: 150px;
 
   display: flex;
