@@ -8,6 +8,7 @@ const cardFileName = "/valuecards.json"; // "/valuecards_small.json";
 let cardList = [];
 
 // Set up all event listeners
+// TODO: Clean up event listeners
 window.addEventListener('DOMContentLoaded', () => {
   const openAboutDialog = document.getElementById("about-button");
   openAboutDialog.addEventListener("click", showAboutDialog);
@@ -17,6 +18,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const closeDialogButton = document.getElementById("close-dialog");
   closeDialogButton.addEventListener("click", closeAboutDialog);
+
+  const openHelpDialog = document.getElementById("help-button");
+  openHelpDialog.addEventListener("click", function () {
+    modal.style.display = "flex";
+  });
 
   // add event listeners to the 3 columns
   const lists = document.querySelectorAll("div.list-of-cards");

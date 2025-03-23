@@ -66,26 +66,21 @@ body {
   right: 0;
 }
 
-.nav-bar {
+.navbar {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  position: relative;
-  background-color: var(--nav-bar);
   padding: 10px 20px;
-}
-
-.nav-icon {
-  position: absolute;
-  left: 20px;
+  background-color: var(--nav-bar);
+  color: white;
 }
 
 .nav-title {
-  flex: 1;
-  text-align: center;
+  display: flex;
+  align-items: center;
 }
 
-.nav-title h1 {
+.logo {
   margin: 0;
   font-family: "Proxima Nova Bold", Arial, sans-serif;
   font-size: 1.8em;
@@ -94,10 +89,26 @@ body {
   color: white;
 }
 
-.nav-icon img {
-  max-height: 50px;
-  max-width: 100%;
+.nav-list {
+  display: flex;
+  align-items: center;
+}
+
+.nav-button {
+  background-color: var(--nav-bar);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 8px 16px;
+  margin-left: 10px;
   cursor: pointer;
+  font-size: 18px;
+  font-family: "Proxima Nova Bold", Arial, sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: var(--soft-navy);
 }
 
 #about-dialog {
