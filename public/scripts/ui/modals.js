@@ -5,7 +5,7 @@ export function setupModals() {
     setupModal("help", true);
     setupModal("contact");
 
-    function setupModal(id, closeButtonId, showOnLoad = false) {
+    function setupModal(id, showOnLoad = false) {
         const modal = document.getElementById(`${id}-modal`);
         const openButton = document.getElementById(`${id}-open`);
         const closeButton = document.getElementById(`${id}-close`);
