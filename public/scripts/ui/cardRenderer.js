@@ -1,6 +1,6 @@
 import { shuffleList } from "../utils/shuffleList.js";
 
-let cardList = [];
+export let cardList = [];
 
 // creates a list of card objects from the given card data
 export function createCards(cardData) {

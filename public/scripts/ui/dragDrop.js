@@ -1,3 +1,5 @@
+import { cardList } from "../ui/cardRenderer.js";
+
 // Adds drag/drop behavior of columns (Very Important, Important, Not Important)
 export function setupDragAndDrop() {
     document.querySelectorAll("div.list-of-cards").forEach(list => {
