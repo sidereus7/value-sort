@@ -10,6 +10,7 @@ let cardList = [];
 // Set up all event listeners
 // TODO: Clean up event listeners
 window.addEventListener('DOMContentLoaded', () => {
+  /** ABOUT DIALOG **/
   const openAboutDialog = document.getElementById("about-button");
   openAboutDialog.addEventListener("click", showAboutDialog);
 
@@ -19,28 +20,40 @@ window.addEventListener('DOMContentLoaded', () => {
   const closeDialogButton = document.getElementById("close-dialog");
   closeDialogButton.addEventListener("click", closeAboutDialog);
 
+  /** HELP DIALOG **/
+  const helpModal = document.getElementById("help-modal");
   const openHelpDialog = document.getElementById("help-button");
   openHelpDialog.addEventListener("click", function () {
-    modal.style.display = "flex";
+    helpModal.style.display = "flex";
   });
 
-  // add event listeners to the 3 columns
+  // Show the modal when the page loads
+  helpModal.style.display = "flex";
+
+  // Hide the modal when the "OK" button is clicked
+  const closeHelpModal = document.getElementById("closeHelpModal");
+  closeHelpModal.addEventListener("click", function () {
+      helpModal.style.display = "none";
+  });
+
+  /** CONTACT DIALOG **/
+  const contactModal = document.getElementById("contact-modal");
+  const openContactDialog = document.getElementById("contact-button");
+  openContactDialog.addEventListener("click", function () {
+    contactModal.style.display = "flex";
+  });
+
+  const closeContactModal = document.getElementById("close-contact-modal");
+  closeContactModal.addEventListener("click", function () {
+      contactModal.style.display = "none";
+  });
+
+  /** COLUMN DRAG/DROP LISTENERS **/
   const lists = document.querySelectorAll("div.list-of-cards");
   lists.forEach(function(list) {
     list.addEventListener("dragover", dragover_handler);
     list.addEventListener("dragleave", dragleave_handler);
     list.addEventListener("drop", drop_handler);
-  });
-
-  const modal = document.getElementById("modal");
-  const closeModal = document.getElementById("closeModal");
-
-  // Show the modal when the page loads
-  modal.style.display = "flex";
-
-  // Hide the modal when the "OK" button is clicked
-  closeModal.addEventListener("click", function () {
-      modal.style.display = "none";
   });
 });
 

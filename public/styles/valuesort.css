@@ -299,7 +299,7 @@ body {
   text-align: center;
 }
 
-.modal {
+#help-modal {
   display: none; /* Initially hidden */
   position: fixed;
   top: 0;
@@ -307,19 +307,62 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Modal content */
-.modal-content {
+#contact-modal {
+  display: none; /* Initially hidden */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  align-items: center;
+  justify-content: center;
+}
+
+#help-modal .modal-content {
   background: white;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   text-align: center;
   width: 40%;
+}
+
+/* Modal content */
+#contact-modal .modal-content {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  height: 80%;
+  width: 50%;
+}
+
+#close-contact-modal {
+  align-self: flex-end;
+  background: transparent;
+  border: none;
+  color: #626368;
+  font-size: 18pt;
+  font-weight: bold;
+  padding: 0;
+}
+
+#iframe-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+  width: 90%;
 }
 
 .modal-list {
@@ -329,7 +372,7 @@ body {
 }
 
 /* Stylish button */
-#closeModal {
+#closeHelpModal, #closeContactModal {
   background-color: var(--soft-navy); /* Nice blue color */
   color: white;
   border: none;
@@ -342,13 +385,13 @@ body {
 }
 
 /* Hover effect */
-#closeModal:hover {
+#closeHelpModal:hover, #closeContactModal:hover {
   background-color: var(--minty);
   transform: scale(1.05);
 }
 
 /* Click effect */
-#closeModal:active {
+#closeHelpModal:active, #closeContactModal:active {
   background-color: #003d80;
   transform: scale(0.95);
 }

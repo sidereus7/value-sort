@@ -21,23 +21,8 @@
         </div>
       </nav>
 
-      <!-- basic instructions -->
-      <div id="modal" class="modal">
-        <div class="modal-content">
-            <h1>Welcome to Personal Values Card Sort</h1>
-            <div class="modal-list">
-              <ol>
-                <li>Sort the following cards into the three categories below.</li>
-                <li>Discover what are your central values at this moment.</li>
-                <li>Share with friends or self-reflect.</li>
-              </ol>
-            </div>
-            <button id="closeModal">Start</button>
-        </div>
-      </div>
-
-      <!-- TODO: This should probably change from a dialog to something that is
-          compatible with all browsers (Safari, Firefox, etc.) -->
+        <!-- TODO: This should probably change from a dialog to something that is
+      compatible with all browsers (Safari, Firefox, etc.) -->
       <dialog id="about-dialog">
         <div>
           <button id="close-dialog" type="button">X</button>
@@ -49,6 +34,31 @@
           </p>
         </div>
       </dialog>
+
+      <!-- basic instructions -->
+      <div id="help-modal" class="modal">
+        <div class="modal-content">
+            <h1>Welcome to Personal Values Card Sort</h1>
+            <div class="modal-list">
+              <ol>
+                <li>Sort the following cards into the three categories below.</li>
+                <li>Discover what are your central values at this moment.</li>
+                <li>Share with friends or self-reflect.</li>
+              </ol>
+            </div>
+            <button id="closeHelpModal">Start</button>
+        </div>
+      </div>
+
+      <!-- TODO: Feedback form -->
+      <div id="contact-modal" class="modal">
+        <div class="modal-content">
+          <button id="close-contact-modal">X</button>
+          <div id="iframe-container">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSedrsfXegJcQU7jjifyyXxQu35szwImsn4uMOpvVxvAqHz88A/viewform?embedded=true" width="640" height="375" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+          </div>
+        </div>
+      </div>
 
       <!-- TODO: what to display here when done?? -->
       <!-- Button that leads to next stage. -->
