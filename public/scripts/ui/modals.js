@@ -1,9 +1,10 @@
+// Sets up event listeners for about, help, contact modals' open/close buttons
+// Displays help modal on page load
 export function setupModals() {
     setupModal("about");
     setupModal("help", true);
     setupModal("contact");
 
-    // TODO: update name of closeHelpModal to close-help-modal
     function setupModal(id, closeButtonId, showOnLoad = false) {
         const modal = document.getElementById(`${id}-modal`);
         const openButton = document.getElementById(`${id}-open`);

@@ -3,6 +3,7 @@ import { createCards } from "./ui/cardRenderer.js";
 const cardFileName = "/valuecards.json";
 let cardList = [];
 
+// fetches all card data from the above cardFileName
 export function fetchCardData() {
     const httpRequest = new XMLHttpRequest();
 

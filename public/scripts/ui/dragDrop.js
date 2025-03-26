@@ -1,3 +1,4 @@
+// Adds drag/drop behavior of columns (Very Important, Important, Not Important)
 export function setupDragAndDrop() {
     document.querySelectorAll("div.list-of-cards").forEach(list => {
         list.addEventListener("dragover", dragoverHandler);
@@ -6,6 +7,7 @@ export function setupDragAndDrop() {
     });
 }
 
+// Highlights the column that the draggable is hovering over
 function dragoverHandler(ev) {
     ev.preventDefault();
 
@@ -15,6 +17,7 @@ function dragoverHandler(ev) {
     }
 }
 
+// Removes highlight on the column that the draggable has just left
 function dragleaveHandler(ev) {
     ev.preventDefault();
     
@@ -24,6 +27,8 @@ function dragleaveHandler(ev) {
     }
 }
 
+// updates the card queue with the next available card and shrinks
+// the card when placed in a column
 function dropHandler(ev) {
     ev.preventDefault();
     

@@ -2,6 +2,7 @@ import { shuffleList } from "../utils/shuffleList.js";
 
 let cardList = [];
 
+// creates a list of card objects from the given card data
 export function createCards(cardData) {
     for (let i = 0; i < cardData.length; i++) {
         let cardInfo = cardData[i];
@@ -17,22 +18,24 @@ export function createCards(cardData) {
     }
 }
 
+// creates a card element from the given card data
+// (title, description)
 function createCardElement(cardInfo) {
     const card = document.createElement("div");
     card.classList.add("card", "enqueued");
     card.setAttribute("id", cardInfo.title);
     card.setAttribute("draggable", "true");
 
-    // Populate the title and description
+    // Populate card title
     const cardTitle = document.createElement("p");
     cardTitle.textContent = cardInfo.title.toUpperCase();
     cardTitle.classList.add("card-title");
+    card.appendChild(cardTitle);
 
+    // Populate card description
     const cardDesc = document.createElement("p");
     cardDesc.textContent = cardInfo.description;
     cardDesc.classList.add("card-desc");
-
-    card.appendChild(cardTitle);
     card.appendChild(cardDesc);
 
     // Add drag event listeners
@@ -59,3 +62,5 @@ function dragendHandler(ev) {
         return;
     }
 }
+
+// TODO: Should the drop listeners live here too for cards?
