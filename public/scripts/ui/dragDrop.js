@@ -1,4 +1,5 @@
 import { cardList } from "../ui/cardRenderer.js";
+import { showReduceButton } from "../transitions.js";
 
 // Adds drag/drop behavior of columns (Very Important, Important, Not Important)
 export function setupDragAndDrop() {
@@ -48,9 +49,15 @@ function dropHandler(ev) {
                 // add next card from list to queue
                 cardQueue.appendChild(cardList.shift());
             } else {
-                let finished = document.createElement("p");
-                finished.textContent = "All done!";
-                cardQueue.appendChild(finished);
+                const vipCards = document.querySelectorAll("#very-important .shrunk-card");
+                console.log(vipCards.length);
+                if (vipCards.length > 8) {
+                    showReduceButton();
+                } else if (vipCards.length < 8) {
+                    // show message that tells them to keep sorting
+                } else {  // VIP list has exactly 8 cards
+                    // skip user to the ranking phase
+                }
             }
             card.classList.remove("enqueued");
         }

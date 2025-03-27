@@ -6,4 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setupModals();  // about, contact, and help
     setupDragAndDrop();  // column drag/drop listeners 
     fetchCardData();  // card creation and card drag listeners
+
+    // Step 2: Reducing "Very Important" down to 8 cards
 });

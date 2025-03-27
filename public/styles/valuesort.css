@@ -389,3 +389,14 @@ body {
   background-color: #003d80;
   transform: scale(0.95);
 }
+
+#to-reduction {
+  display: none; /* Initially hidden */
+
+  bottom: 0;
+  width: 100%;
+
+  justify-content: center;
+  align-self: flex-end;
+  align-items: center;
+}
