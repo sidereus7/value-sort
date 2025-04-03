@@ -1,0 +1,94 @@
+/* Styles for containers, columns, navbar */
+
+html, body {
+  height: 100%;
+}
+
+body {
+    background-image: url("../images/deskbackground.jpg");
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    font-family: "Proxima Nova", Arial, sans-serif;
+}
+  
+.container {
+    display: flex;
+    flex-direction: column;
+
+    /* from my boi stack overflow */
+    /* TODO: takes up more than full page???? */
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+  
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--nav-bar);
+    color: white;
+}
+  
+.nav-title {
+    display: flex;
+    align-items: center;
+}
+  
+.logo {
+    margin: 0;
+    font-family: "Proxima Nova Bold", Arial, sans-serif;
+    font-size: 1.8em;
+    letter-spacing: .2rem;
+    text-transform: uppercase;
+    color: white;
+}
+  
+.nav-list {
+    display: flex;
+    align-items: center;
+}
+
+.list-of-cards {
+    align-content: flex-start;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    flex: 1;
+    justify-content: space-around;
+  
+    overflow-y: scroll;
+}
+
+.columns {
+    display: flex;
+    justify-content: space-around;
+  
+    height: 55%;
+    padding: 10px;
+}
+
+#card-queue {
+    bottom: 0;
+    width: 100%;
+  
+    display: flex;
+    justify-content: center;
+    align-self: flex-end;
+    align-items: center;
+}
+
+#to-reduction {
+    display: none; /* Initially hidden */
+  
+    bottom: 0;
+    width: 100%;
+  
+    justify-content: center;
+    align-self: flex-end;
+    align-items: center;
+}

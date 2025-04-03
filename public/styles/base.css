@@ -1,0 +1,43 @@
+/* Styles for fonts, colors, root variables */
+
+@font-face {
+  font-family: "Proxima Nova";
+  src:
+    local("Proxima Nova"),
+    url("../fonts/proximanova_regular.ttf");
+}
+
+@font-face {
+  font-family: "Proxima Nova Bold";
+  src:
+    local("Proxima Nova Bold"),
+    url("../fonts/proximanova_bold.otf");
+}
+
+@font-face {
+  font-family: "Garamond EB";
+  src:
+    local("Garamond EB"),
+    url("../fonts/EBGaramond-Regular.ttf");
+}
+
+:root {
+  /* Jackie's Site: https://nwcbt.com/ */
+  --minty: rgba(93, 177, 168, 1);
+  --soft-navy: #417D9A;
+  --blackish: rgba(33, 33, 33, 1);
+  --silver: rgba(167, 168, 170, 1);
+  --dark-silver: rgba(133, 132, 134, 1);
+
+  --background-color: white;
+  --nav-bar: var(--minty);
+  --nav-bar-text: white;
+  --card: white;
+  --card-border: var(--soft-navy);
+  --shrunk-card: white;
+  --main-text: var(--blackish);
+  --column: rgba(255, 255, 255, 0.5);
+  --column-border: var(--dark-silver);
+  --column-title: var(--minty);
+  --column-title-text: white;
+}
