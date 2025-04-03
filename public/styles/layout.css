@@ -12,12 +12,10 @@ body {
     font-family: "Proxima Nova", Arial, sans-serif;
 }
   
-.container {
+#whole-page {
     display: flex;
     flex-direction: column;
 
-    /* from my boi stack overflow */
-    /* TODO: takes up more than full page???? */
     position: absolute;
     top: 0;
     bottom: 0;
@@ -25,7 +23,7 @@ body {
     right: 0;
 }
   
-.navbar {
+#navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -34,12 +32,12 @@ body {
     color: white;
 }
   
-.nav-title {
+#nav-title {
     display: flex;
     align-items: center;
 }
   
-.logo {
+#logo {
     margin: 0;
     font-family: "Proxima Nova Bold", Arial, sans-serif;
     font-size: 1.8em;
@@ -48,23 +46,12 @@ body {
     color: white;
 }
   
-.nav-list {
+#nav-buttons {
     display: flex;
     align-items: center;
 }
 
-.list-of-cards {
-    align-content: flex-start;
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    gap: 10px;
-    flex: 1;
-    justify-content: space-around;
-  
-    overflow-y: scroll;
-}
-
-.columns {
+#columns {
     display: flex;
     justify-content: space-around;
   

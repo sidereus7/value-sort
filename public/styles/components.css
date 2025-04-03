@@ -65,6 +65,17 @@ background-color: var(--soft-navy);
     background: var(--column);
 }
 
+.list-of-cards {
+    align-content: flex-start;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    flex: 1;
+    justify-content: space-around;
+  
+    overflow-y: scroll;
+}
+
 /**************************************************** PROGRESS BAR *********************************************************************/
 #progress-bar {
     color: white;
