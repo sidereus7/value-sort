@@ -3,7 +3,7 @@ import { showReduceButton } from "../transitions.js";
 
 // Adds drag/drop behavior of columns (Very Important, Important, Not Important)
 export function setupDragAndDrop() {
-    document.querySelectorAll("div.list-of-cards").forEach(list => {
+    document.querySelectorAll("div.column-list").forEach(list => {
         list.addEventListener("dragover", dragoverHandler);
         list.addEventListener("dragleave", dragleaveHandler);
         list.addEventListener("drop", dropHandler);
@@ -14,7 +14,7 @@ export function setupDragAndDrop() {
 function dragoverHandler(ev) {
     ev.preventDefault();
 
-    const column = ev.target.closest(".list-of-cards");
+    const column = ev.target.closest(".column-list");
     if (column) {
       column.classList.add("over");
     }
@@ -24,7 +24,7 @@ function dragoverHandler(ev) {
 function dragleaveHandler(ev) {
     ev.preventDefault();
     
-    const column = ev.target.closest(".list-of-cards");
+    const column = ev.target.closest(".column-list");
     if (column) {
         column.classList.remove("over");
     }
@@ -35,7 +35,7 @@ function dragleaveHandler(ev) {
 function dropHandler(ev) {
     ev.preventDefault();
     
-    const column = ev.target.closest(".list-of-cards");
+    const column = ev.target.closest(".column-list");
     if (column) {
         column.classList.remove("over");
 

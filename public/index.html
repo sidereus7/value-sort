@@ -10,7 +10,7 @@
 
   <body>
     <div id="whole-page">
-      <nav id="navbar">
+      <nav id="nav-bar">
         <div id="nav-title">
           <span id="logo">Personal Value Card Sort</span>
         </div>
@@ -23,7 +23,7 @@
 
       <!-- TODO: This should probably change from a dialog to something that is
       compatible with all browsers (Safari, Firefox, etc.) -->
-      <div id="about-modal">
+      <div id="about-modal" class="modal">
         <div class="modal-content">
           <button id="about-close" type="button">X</button>
 
@@ -81,21 +81,21 @@
         <div id="very-important" class="column">
           <h2 class="column-title">Very Important</h2>
           
-          <div id="very-important-list" class="list-of-cards">
+          <div id="very-important-list" class="column-list">
           </div>
         </div>
 
         <div id="important" class="column">
           <h2 class="column-title">Important</h2>
           
-          <div id="important-list" class="list-of-cards">
+          <div id="important-list" class="column-list">
           </div>
         </div>
 
         <div id="not-important" class="column">
           <h2 class="column-title">Not Important</h2>
           
-          <div id="not-important-list" class="list-of-cards">
+          <div id="not-important-list" class="column-list">
           </div>
         </div>
       </div>

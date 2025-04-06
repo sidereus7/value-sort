@@ -59,13 +59,9 @@ background-color: var(--soft-navy);
 
 .column h2 {
     text-align: center;
-  }
-
-#very-important, #important, #not-important {
-    background: var(--column);
 }
 
-.list-of-cards {
+.column-list {
     align-content: flex-start;
     display: grid;
     grid-template-columns: repeat(2, auto);
@@ -83,7 +79,7 @@ background-color: var(--soft-navy);
     justify-content: center;
 }
   
-#progress-bar > p {
+#progress-bar p {
     margin: none;
 }
 
@@ -145,31 +141,7 @@ background-color: var(--soft-navy);
   }
 
   /**************************************************** MODAL *****************************************************************************/
-  #about-modal {
-    display: none; /* Initially hidden */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    align-items: center;
-    justify-content: center;
-  }
-  
-  #help-modal {
-    display: none; /* Initially hidden */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    align-items: center;
-    justify-content: center;
-  }
-  
-  #contact-modal {
+  .modal {
     display: none; /* Initially hidden */
     position: fixed;
     top: 0;
