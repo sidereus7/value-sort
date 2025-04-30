@@ -115,9 +115,17 @@ background-color: var(--soft-navy);
   
     pointer-events: none;
   }
+
+  /* gray out card in deck when being dragged */
+  .shadow-card {
+    border-color: var(--silver);
+    color: var(--silver);
+    opacity: 0.75;
+  }
   
   .shrunk-card {
     background-color: var(--shrunk-card);
+    opacity: 1;
   
     height: 25px;
     width: 150px;

@@ -50,13 +50,22 @@ function createCardElement(cardInfo) {
 function dragstartHandler(ev) {
     // Add the target element's id to the data transfer object
     ev.dataTransfer.setData("text/plain", ev.target.id);
+
+    let card = ev.target.closest('.card');
+    // change this to a class that you add and remove
+    requestAnimationFrame(() => {
+        card.classList.add("shadow-card");
+    });
 }
 
 function dragenterHandler(ev) {
-    ev.dataTransfer.dropEffect = "move";
+    ev.dataTransfer.dropEffect = "copy";
 }
 
 function dragendHandler(ev) {
+    let card = ev.target.closest('.card');
+    card.classList.remove("shadow-card");
+
     // do nothing if not dropped into droppable location
     if (ev.dataTransfer.dropEffect === "none") {
         return;
